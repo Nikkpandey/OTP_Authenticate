@@ -12,9 +12,9 @@ public class UserService {
         this.userRepository = new UserRepository();
     }
 
-    // Correct the save method call to pass the entire User object
+    
     public boolean createAccount(User user) {
-        return userRepository.save(user);  // Pass the entire user object
+        return userRepository.save(user); 
     }
 
     public String getUserDetails(String phoneNumber) {
