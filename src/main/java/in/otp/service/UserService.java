@@ -2,7 +2,6 @@ package in.otp.service;
 
 import in.otp.model.User;
 import in.otp.repository.UserRepository;
-
 import java.util.Optional;
 
 public class UserService {
@@ -13,8 +12,9 @@ public class UserService {
         this.userRepository = new UserRepository();
     }
 
+    // Correct the save method call to pass the entire User object
     public boolean createAccount(User user) {
-        return userRepository.save(user.getPhoneNumber(), user.getFingerprint());
+        return userRepository.save(user);  // Pass the entire user object
     }
 
     public String getUserDetails(String phoneNumber) {

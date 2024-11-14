@@ -20,7 +20,7 @@ public class Main {
                 System.out.println("\nSelect an option:");
                 System.out.println("1. Register a new account");
                 System.out.println("2. Login using OTP");
-                System.out.println("3. Resend OTP");
+                System.out.println("3. Send OTP");
                 System.out.println("4. Get current user details");
                 System.out.println("5. Exit");
 
@@ -40,7 +40,7 @@ public class Main {
                         getUserDetails(reader);
                         break;
                     case "5":
-                        System.out.println("Exiting...");
+                        System.out.println("----------------------");
                         return;
                     default:
                         System.out.println("Invalid choice! Please select again.");

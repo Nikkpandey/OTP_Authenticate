@@ -8,12 +8,13 @@ import java.util.Optional;
 
 public class UserRepository {
 
-    public boolean save(String phoneNumber, String fingerprint) {
+    
+    public boolean save(User user) {
         String query = "INSERT INTO users (phone_number, fingerprint) VALUES (?, ?)";
         try (Connection connection = AppConfig.getConnection();
              PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, phoneNumber);
-            stmt.setString(2, fingerprint);
+            stmt.setString(1, user.getPhoneNumber());
+            stmt.setString(2, user.getFingerprint());
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;  
         } catch (SQLException e) {
@@ -29,7 +30,6 @@ public class UserRepository {
             stmt.setString(1, phoneNumber);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                
                 return Optional.of(rs.getString("fingerprint"));
             }
         } catch (SQLException e) {
@@ -37,9 +37,4 @@ public class UserRepository {
         }
         return Optional.empty();  
     }
-
-	public boolean save(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }
