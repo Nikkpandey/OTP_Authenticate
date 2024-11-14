@@ -13,9 +13,9 @@ public class AppConfig {
 
     static {
         try {
-            // Load MySQL JDBC Driver
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // Establish database connection
+            
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
             System.out.println("Database connection established successfully!");
         } catch (ClassNotFoundException | SQLException e) {
@@ -24,7 +24,6 @@ public class AppConfig {
         }
     }
 
-    // Returns the established connection if it's valid
     public static Connection getConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -39,7 +38,6 @@ public class AppConfig {
         }
     }
 
-    // Close the connection gracefully
     public static void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
